@@ -1,6 +1,6 @@
 # stochastic-demand-opt
 
-This repository contains a production-ready pipeline for forecasting stochastic demand using LightGBM quantile regression, followed by multi-period inventory optimization using Mixed-Integer Linear Programming (MILP).
+This repository contains a pipeline for forecasting stochastic demand using LightGBM quantile regression, followed by multi-period inventory optimization using Mixed-Integer Linear Programming (MILP).
 
 ## Project Summary
 
