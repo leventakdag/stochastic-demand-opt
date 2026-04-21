@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stochastic_demand_opt"
+version = "0.1.0"
+description = "Stochastic Demand Optimization and Inventory Backtesting using LightGBM and MILP"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "numpy",
+    "pandas",
+    "scipy",
+    "scikit-learn",
+    "lightgbm"
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["stochastic_demand_opt*"]
