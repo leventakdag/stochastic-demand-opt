@@ -65,22 +65,40 @@ The multi-period inventory backtest optimizes the reorder quantities $q_i$ for e
 For each period, the Mixed-Integer Linear Program (MILP) is defined as:
 
 **Objective:**
-$$ \min_{q, \text{over}, \text{short}} \sum_{i=1}^{n} \sum_{s=1}^{S} P(s) \Big( h_i \cdot \text{over}_{i,s} + p_i \cdot \text{short}_{i,s} \Big) $$
+
+$$
+\min_{q, \text{over}, \text{short}} \sum_{i=1}^{n} \sum_{s=1}^{S} P(s) \Big( h_i \cdot \text{over}_{i,s} + p_i \cdot \text{short}_{i,s} \Big)
+$$
 
 **Subject to:**
 
-1. **Scenario Balance:**
-   $$ \text{over}_{i,s} \ge I_i + q_i - d_{i,s} \quad \forall i, \forall s $$
-   $$ \text{short}_{i,s} \ge d_{i,s} - (I_i + q_i) \quad \forall i, \forall s $$
+**1. Scenario Balance:**
 
-2. **Budget Constraint:**
-   $$ \sum_{i=1}^{n} c_i \cdot q_i \le B $$
+$$
+\text{over}_{i,s} \ge I_i + q_i - d_{i,s} \quad \forall i, \forall s
+$$
 
-3. **Storage Constraint:**
-   $$ \sum_{i=1}^{n} v_i \cdot (I_i + q_i) \le C $$
+$$
+\text{short}_{i,s} \ge d_{i,s} - (I_i + q_i) \quad \forall i, \forall s
+$$
 
-4. **Non-negativity & Integrality:**
-   $$ q_i \in \mathbb{Z}^+, \quad \text{over}_{i,s} \ge 0, \quad \text{short}_{i,s} \ge 0 $$
+**2. Budget Constraint:**
+
+$$
+\sum_{i=1}^{n} c_i \cdot q_i \le B
+$$
+
+**3. Storage Constraint:**
+
+$$
+\sum_{i=1}^{n} v_i \cdot (I_i + q_i) \le C
+$$
+
+**4. Non-negativity & Integrality:**
+
+$$
+q_i \in \mathbb{Z}^+, \quad \text{over}_{i,s} \ge 0, \quad \text{short}_{i,s} \ge 0
+$$
 
 Where:
 - $S$: Scenarios derived from quantile forecasts (e.g. 10th, 50th, 90th percentiles).
